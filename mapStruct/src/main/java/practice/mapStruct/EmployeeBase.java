@@ -1,4 +1,4 @@
-package org.example;
+package practice.mapStruct;
 
 public class EmployeeBase {
 	public String id;

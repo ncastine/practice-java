@@ -1,4 +1,4 @@
-package org.example;
+package practice.mapStruct;
 
 public interface EmployeeRecordInterface {
 	String id();

@@ -9,9 +9,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
-        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+        <org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
     </properties>
 
     <dependencies>
@@ -52,8 +52,6 @@
                             <version>${org.mapstruct.version}</version>
                         </path>
                     </annotationProcessorPaths>
-                    <source>16</source>
-                    <target>16</target>
                 </configuration>
             </plugin>
             <plugin>

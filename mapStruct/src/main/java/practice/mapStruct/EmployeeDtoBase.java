@@ -1,4 +1,4 @@
-package org.example;
+package practice.mapStruct;
 
 public class EmployeeDtoBase {
 	public String uuid;
