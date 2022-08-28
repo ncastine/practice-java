@@ -1,4 +1,4 @@
-package hello;
+package practice.spring.hello;
 
 import java.util.Arrays;
 

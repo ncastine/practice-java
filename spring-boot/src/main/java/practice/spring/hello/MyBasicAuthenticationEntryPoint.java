@@ -1,4 +1,4 @@
-package hello;
+package practice.spring.hello;
 
 import org.springframework.context.annotation.Profile;
 /*import org.springframework.security.core.AuthenticationException;
