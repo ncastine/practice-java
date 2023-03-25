@@ -2,20 +2,21 @@ package practice.spring.hello;
 
 import java.util.Arrays;
 import java.util.concurrent.Callable;
-import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.env.Environment;
 import org.springframework.web.context.annotation.RequestScope;
 
 import javax.servlet.http.HttpServletRequest;
 
 @SpringBootApplication
 public class Application {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -24,8 +25,9 @@ public class Application {
     @Bean
     @RequestScope
     public Callable<String> personalMessage(HttpServletRequest request) {
-        System.out.println("Request scope called " + request);
-        return () -> "Test " + request.getRemoteUser();
+        logger.debug("Request scope called {}", request);
+        final String user = request.getRemoteUser();
+        return () -> user == null ? null : "I see you are " + user;
     }
 
     /**
@@ -33,21 +35,15 @@ public class Application {
      * everything is wired.
      */
     @Bean
-    public CommandLineRunner debugListBeans(ApplicationContext context, Environment environment) {
+    public CommandLineRunner debugListBeans(ApplicationContext context) {
         return args -> {
-            // Only print Beans if debug profile is set.
-            // Do not evaluate context until command line runs.
-            if (Arrays.stream(environment.getActiveProfiles()).collect(Collectors.toSet()).contains("debug")) {
-                if (args != null && args.length > 0) {
-                    System.out.println("Arguments: " +  String.join(", ", Arrays.asList(args)));
-                }
-                System.out.println("All registered Beans...");
-                String[] beanNames = context.getBeanDefinitionNames();
-                Arrays.sort(beanNames);
-                for (String beanName : beanNames) {
-                    System.out.println(beanName);
-                }
-            }
+            // Note if any command arguments provided
+            logger.debug("Command line arguments: {}", Arrays.asList(args));
+            // Print all Beans at debug level.
+            // DO NOT evaluate context until command line runs.
+            logger.debug("All registered Beans...");
+            Arrays.stream(context.getBeanDefinitionNames()).sorted()
+                    .forEach(b -> logger.debug("{}", b));
         };
     }
 }

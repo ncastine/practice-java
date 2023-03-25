@@ -14,8 +14,8 @@ public class HelloController {
 
     @RequestMapping("/")
     public String index() throws Exception {
-        System.out.println("TEST callable " + personalMessage.call());
-        return "Greetings from Spring Boot!";
+        final String message = personalMessage.call();
+        return "Greetings from Spring Boot!" + (message == null ? "" : " " + message);
     }
 
     @RequestMapping("/user")
