@@ -20,11 +20,12 @@ public class CompletableFutureTest {
 
 	@Test
 	public void testExceptionThrown() throws Exception {
-		CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> { throw new RuntimeException("Test exception in background"); });
-
 		final AtomicBoolean secondStageRan = new AtomicBoolean();
 
-		future.whenCompleteAsync((r, e) -> secondStageRan.set(true));
+		final CompletableFuture<Object> future =
+				CompletableFuture.supplyAsync(() -> {
+					throw new RuntimeException("Test exception in background");
+				}).whenCompleteAsync((r, e) -> secondStageRan.set(true));
 
 		try {
 			future.get();
