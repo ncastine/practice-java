@@ -11,7 +11,7 @@ import java.util.concurrent.Callable;
 public class HelloController {
     @Autowired
     private Callable<String> personalMessage;
-    
+
     @RequestMapping("/")
     public String index() throws Exception {
         System.out.println("TEST callable " + personalMessage.call());
