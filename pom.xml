@@ -6,8 +6,10 @@
 
     <groupId>java.practice</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>pom</packaging>
+    <name>Java Parent</name>
+    <description>Just runs Java projects in specific submodules</description>
 
     <modules>
         <module>mapStruct</module>
