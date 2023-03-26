@@ -18,7 +18,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <ignite.version>2.14.0</ignite.version>
         <!-- Some Java 9+ compensation needed for Ignite -->
-        <java.package.arguments>--add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED</java.package.arguments>
+        <java.module.arguments>--add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED</java.module.arguments>
     </properties>
 
     <dependencies>
@@ -67,7 +67,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <jvmArguments>${java.package.arguments}</jvmArguments>
+                    <jvmArguments>${java.module.arguments}</jvmArguments>
                 </configuration>
             </plugin>
             <plugin>
@@ -75,13 +75,13 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
-                    <argLine>${java.package.arguments}</argLine>
+                    <argLine>${java.module.arguments}</argLine>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <configuration>
-                    <argLine>${java.package.arguments}</argLine>
+                    <argLine>${java.module.arguments}</argLine>
                 </configuration>
                 <executions>
                     <execution>
