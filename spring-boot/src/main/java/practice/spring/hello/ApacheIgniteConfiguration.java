@@ -17,7 +17,7 @@ public class ApacheIgniteConfiguration {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Bean
-    public IgniteConfiguration igniteConfiguration() {
+    IgniteConfiguration igniteConfiguration() {
         IgniteConfiguration cfg = new IgniteConfiguration();
         cfg.setIgniteInstanceName("test-ignite");
         return cfg;

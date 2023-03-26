@@ -24,7 +24,7 @@ public class Application {
 
     @Bean
     @RequestScope
-    public Callable<String> personalMessage(HttpServletRequest request) {
+    Callable<String> personalMessage(HttpServletRequest request) {
         logger.debug("Request scope called {}", request);
         final String user = request.getRemoteUser();
         return () -> user == null ? null : "I see you are " + user;
@@ -35,7 +35,7 @@ public class Application {
      * everything is wired.
      */
     @Bean
-    public CommandLineRunner debugListBeans(ApplicationContext context) {
+    CommandLineRunner debugListBeans(ApplicationContext context) {
         return args -> {
             // Note if any command arguments provided
             logger.debug("Command line arguments: {}", Arrays.asList(args));
