@@ -8,6 +8,6 @@
     <root level="INFO">
         <appender-ref ref="CONSOLE" />
     </root>
-    <logger name="practice.spring.hello" level="DEBUG" />
+    <logger name="practice.spring.hello" level="INFO" />
     <logger name="org.springframework.web" level="WARN" />
 </configuration>
