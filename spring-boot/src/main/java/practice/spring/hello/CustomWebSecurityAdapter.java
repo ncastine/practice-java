@@ -3,6 +3,7 @@ package practice.spring.hello;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -26,6 +27,12 @@ public class CustomWebSecurityAdapter {
 				.logout()
 				.permitAll();
 		return http.build();
+	}
+
+	@Bean
+	WebSecurityCustomizer webSecurityCustomizer() {
+		// Disable security on endpoints where it is not needed
+		return web -> web.ignoring().antMatchers("/user-cache");
 	}
 
 	@Bean
