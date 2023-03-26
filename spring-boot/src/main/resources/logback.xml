@@ -9,5 +9,6 @@
         <appender-ref ref="CONSOLE" />
     </root>
     <logger name="practice.spring.hello" level="INFO" />
-    <logger name="org.springframework.web" level="WARN" />
+    <logger name="org.apache" level="WARN" />
+    <logger name="org.springframework" level="WARN" />
 </configuration>
