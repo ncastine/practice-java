@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ public class SecurityConfiguration {
     /**
      * Name of users file to load on startup.
      */
-    private static final String USERS_FILE = "users.properties";
+    private static final String USERS_FILE = "users.json";
 
     /**
      * Prioritized list of paths to search for users file to load.
@@ -48,8 +49,13 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    UserDetailsService userDetailsService() {
+    UserDetailsService userDetailsService() throws IOException {
         // NOT suitable for production
-        return new FileLoadUserDetailsService(USERS_FILE_PATHS);
+        FileLoadUserDetailsService userService = new FileLoadUserDetailsService(USERS_FILE_PATHS);
+        // Generate users if we fail to load them
+        if (userService.loadUsers() == 0) {
+            userService.generateUsers(3);
+        }
+        return userService;
     }
 }
