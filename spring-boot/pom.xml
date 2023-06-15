@@ -40,9 +40,9 @@
     <dependencies>
         <!-- Simple models (record) from another practice project -->
         <dependency>
-            <groupId>practice.mapStruct</groupId>
+            <groupId>practice.java</groupId>
             <artifactId>practice-struct</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
