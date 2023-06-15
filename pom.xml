@@ -6,13 +6,25 @@
 
     <groupId>practice.java</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>pom</packaging>
-    <name>Java Parent</name>
-    <description>Just runs Java projects in specific submodules</description>
+    <name>Java Practice Parent</name>
+    <description>Runs practice Java projects. Defines some common dependency versions.</description>
 
     <modules>
         <module>mapStruct</module>
         <module>spring-boot</module>
     </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.3.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

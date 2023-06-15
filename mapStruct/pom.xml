@@ -4,11 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>practice.mapStruct</groupId>
     <artifactId>practice-struct</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <name>MapStruct Practice</name>
     <description>Practice with MapStruct API</description>
+
+    <parent>
+        <groupId>practice.java</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
@@ -42,6 +48,10 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
