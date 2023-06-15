@@ -16,7 +16,7 @@ public class EmployeeMapperTest {
 		EmployeeMapper mapper = Mappers.getMapper(EmployeeMapper.class);
 		Employee original = new Employee();
 		original.department = "Test 1";
-		original.id = "" + UUID.randomUUID();
+		original.id = UUID.randomUUID().toString();
 		original.name = "Jane Doe";
 		EmployeeDto dto = mapper.toDto(original);
 		assertEquals(original.name, dto.name);
@@ -29,7 +29,7 @@ public class EmployeeMapperTest {
 	@Test
 	void testRecordMapping() throws Exception {
 		EmployeeMapper mapper = Mappers.getMapper(EmployeeMapper.class);
-		final String id = "" + UUID.randomUUID();
+		final String id = UUID.randomUUID().toString();
 		final String department = "Test 1";
 		final String name = "Jane Doe";
 		EmployeeRecord record = new EmployeeRecord(id, name, department);
@@ -45,7 +45,7 @@ public class EmployeeMapperTest {
 	@Test
 	public void testJacksonRecordDeserialize() {
 		final ObjectMapper mapper = new ObjectMapper();
-		final String id = "" + UUID.randomUUID();
+		final String id = UUID.randomUUID().toString();
 		final String department = "Test 1";
 		final String name = "Jane Doe";
 		ObjectNode json = mapper.createObjectNode();
