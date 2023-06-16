@@ -4,30 +4,26 @@ import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
 import org.apache.ignite.Ignition;
 import org.apache.ignite.configuration.IgniteConfiguration;
-import org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi;
-import org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import practice.mapStruct.Employee;
-
-import static java.util.Collections.singletonList;
 
 /**
  * Initialize a simple in-memory Apache Ignite cache.
  */
 @Configuration
+@Profile("!no-ignite")
 public class ApacheIgniteConfiguration {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Bean
     IgniteConfiguration igniteConfiguration() {
+        // Just local for now
         IgniteConfiguration cfg = new IgniteConfiguration();
         cfg.setIgniteInstanceName("test-ignite");
-        /*TcpDiscoveryMulticastIpFinder ipFinder = new TcpDiscoveryMulticastIpFinder();
-        ipFinder.setAddresses(singletonList("127.0.0.1:47500..47509"));
-        cfg.setDiscoverySpi(new TcpDiscoverySpi().setIpFinder(ipFinder));*/
         return cfg;
     }
 

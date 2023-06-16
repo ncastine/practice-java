@@ -4,6 +4,7 @@ import org.apache.ignite.IgniteCache;
 import org.apache.ignite.cache.query.QueryCursor;
 import org.apache.ignite.cache.query.ScanQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import practice.mapStruct.Employee;
@@ -13,14 +14,15 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Testing out Ignite caching
+ * Testing out Ignite caching.
  */
 @RestController
-public class IgniteUserCacheController {
+@Profile("!no-ignite")
+public class UserCacheController {
     private final IgniteCache<String, Employee> userCache;
 
     @Autowired
-    IgniteUserCacheController(IgniteCache<String, Employee> userCache) {
+    UserCacheController(IgniteCache<String, Employee> userCache) {
         this.userCache = userCache;
     }
 
