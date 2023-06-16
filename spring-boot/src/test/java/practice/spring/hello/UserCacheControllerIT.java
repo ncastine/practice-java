@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * Intentionally avoiding REST testing here since that would complicate the configuration.
- * This is still and integration test since it uses a real (in-memory) Ignite instance.
+ * This is still an integration test since it uses a real (in-memory) Ignite instance.
  */
 @SpringBootTest(classes = { UserCacheController.class, ApacheIgniteConfiguration.class } )
 public class UserCacheControllerIT {
