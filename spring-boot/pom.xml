@@ -101,14 +101,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <argLine>${java.module.arguments}</argLine>
+                    <argLine>@{argLine} ${java.module.arguments}</argLine>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <configuration>
-                    <argLine>${java.module.arguments}</argLine>
+                    <argLine>@{argLine} ${java.module.arguments}</argLine>
                 </configuration>
                 <executions>
                     <execution>
@@ -118,6 +118,10 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

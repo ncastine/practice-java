@@ -43,6 +43,27 @@
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
+                <plugin>
+                    <!-- Code coverage -->
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.10</version>
+                    <executions>
+                        <execution>
+                            <id>prepare</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <!-- Single report per child module -->
+                            <id>report</id>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
