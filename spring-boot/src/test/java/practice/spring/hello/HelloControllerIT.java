@@ -1,7 +1,7 @@
 package practice.spring.hello;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.stringContainsInOrder;
 
 import java.net.URL;
 
@@ -34,6 +34,6 @@ public class HelloControllerIT {
     @Test
     public void getHello() {
         ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
-        assertThat(response.getBody(), equalTo("Greetings from Spring Boot!"));
+        assertThat(response.getBody(), stringContainsInOrder("Spring Practice - Home", " to see a greeting."));
     }
 }

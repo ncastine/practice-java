@@ -1,7 +1,6 @@
 package practice.spring.hello;
 
 import java.util.Arrays;
-import java.util.concurrent.Callable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,9 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.context.annotation.RequestScope;
-
-import javax.servlet.http.HttpServletRequest;
 
 @SpringBootApplication
 public class Application {
@@ -20,14 +16,6 @@ public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-    }
-
-    @Bean
-    @RequestScope
-    Callable<String> personalMessage(HttpServletRequest request) {
-        logger.debug("Request scope called {}", request);
-        final String user = request.getRemoteUser();
-        return () -> user == null ? null : "I see you are " + user;
     }
 
     /**
