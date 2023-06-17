@@ -1,0 +1,11 @@
+# Build output
+target/
+ignite/
+
+# IDE configuration
+.idea/
+*.iml
+.vscode/
+
+# Operating system temporary files
+.DS*
