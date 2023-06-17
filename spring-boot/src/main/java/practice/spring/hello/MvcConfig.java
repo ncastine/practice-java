@@ -1,5 +1,9 @@
 package practice.spring.hello;
 
+//
+// Derived from https://spring.io/guides/gs/securing-web (ASLv2)
+//
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
