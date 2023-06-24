@@ -1,4 +1,4 @@
-package practice.mapStruct;
+package practice.map_struct;
 
 import org.junit.jupiter.api.Test;
 

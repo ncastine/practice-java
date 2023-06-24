@@ -1,4 +1,4 @@
-package practice.mapStruct;
+package practice.map_struct;
 
 public interface EmployeeRecordInterface {
 	String id();
