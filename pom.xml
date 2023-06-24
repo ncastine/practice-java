@@ -12,7 +12,7 @@
     <description>Runs practice Java projects. Defines some common dependency versions.</description>
 
     <modules>
-        <module>mapStruct</module>
+        <module>map-struct</module>
         <module>spring-boot</module>
     </modules>
 
